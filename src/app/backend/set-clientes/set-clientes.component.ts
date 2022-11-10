@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { InfoClienteDTO } from 'src/app/models/cliente-model/cliente-model.module';
+import { InfoVendedorDTO } from 'src/app/models/cliente-model/cliente-model.module';
 import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ServiceService } from 'src/app/services/service.service';
 })
 export class SetClientesComponent implements OnInit {
 
-  infoCliente: InfoClienteDTO = new InfoClienteDTO();
+  infoVendedor: InfoVendedorDTO = new InfoVendedorDTO();
 
   constructor(public menuController: MenuController,
               public service: ServiceService) { }
@@ -23,7 +23,7 @@ export class SetClientesComponent implements OnInit {
   }
 
   guardarCliente() {
-    console.log(this.infoCliente);
-    this.service.crearCliente(this.infoCliente);
+    console.log(this.infoVendedor);
+    // this.service.crearCliente(this.infoVendedor);
   }
 }
