@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { InfoClienteDTO, InfoResponseClienteDTO } from '../models/cliente-model/cliente-model.module';
 import { catchError, map, mergeMap, retry } from 'rxjs/operators';
 import { from, Observable, throwError } from 'rxjs';
+import { InfoClienteDTO, InfoResponseClienteDTO } from '../models/models/models.module';
 
 @Injectable({
   providedIn: 'root'
