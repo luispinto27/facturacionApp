@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { InfoClienteDTO } from 'src/app/models/cliente-model/cliente-model.module';
+import { InfoClienteDTO } from 'src/app/models/models/models.module';
+
 import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
