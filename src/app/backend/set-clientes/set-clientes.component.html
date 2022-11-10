@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="subtitulo">
+      Clientes
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()" color="primary">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3 class="subtitulo encabezado"> Ingrese los datos del Cliente</h3>
+  <ion-item style="margin-top: 20px;">
+    <ion-label class="normal" position="floating">
+      Nombres:
+    </ion-label>
+    <ion-input [(ngModel)]="infoCliente.clienteNombres" class="normal" type="string" inputmode="text">
+
+    </ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 20px;">
+    <ion-label class="normal" position="floating">
+      Apellidos:
+    </ion-label>
+    <ion-input [(ngModel)]="infoCliente.clienteApellidos" class="normal" type="string" inputmode="text">
+
+    </ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 20px;">
+    <ion-label class="normal" position="floating">
+      Número de Identificación:
+    </ion-label>
+    <ion-input [(ngModel)]="infoCliente.clienteNumeroIdentificacion" class="normal" type="string" inputmode="text">
+
+    </ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 20px;">
+    <ion-label class="normal" position="floating">
+      Teléfono:
+    </ion-label>
+    <ion-input [(ngModel)]="infoCliente.clienteTelefono" class="normal" type="numeric" inputmode="tel">
+
+    </ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 20px;">
+    <ion-label class="normal" position="floating">
+      Correo Electrónico:
+    </ion-label>
+    <ion-input [(ngModel)]="infoCliente.clienteCorreoElectronico" class="normal" type="string" inputmode="email">
+
+    </ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 20px;">
+    <ion-label class="normal" position="stacked">
+      Fecha Nacimiento:
+    </ion-label>
+    <ion-input [(ngModel)]="infoCliente.clienteFechaNacimiento" class="normal" type="datetime-local">
+    </ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 20px;">
+    <ion-label class="normal" position="floating">
+      Género:
+    </ion-label>
+    <ion-select [(ngModel)]="infoCliente.clienteGenero"  placeholder="Seleccione...">
+      <ion-select-option value="masculino"> Masculino </ion-select-option>
+      <ion-select-option value="femenino"> Femenino </ion-select-option>
+      <ion-select-option value="otro"> Otro </ion-select-option>
+    </ion-select>
+
+  </ion-item>
+
+  <ion-item style="margin-top: 20px;">
+    <ion-checkbox [(ngModel)]="infoCliente.estado" slot="start"></ion-checkbox>
+    <ion-label>Estado</ion-label>
+  </ion-item>
+
+  <ion-button style="margin: 30px" expand="full" color="tertiary" (click)="guardarCliente()" >
+      Guardar
+  </ion-button>
+</ion-content>
