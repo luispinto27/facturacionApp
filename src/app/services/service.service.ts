@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, mergeMap, retry } from 'rxjs/operators';
 import { from, Observable, throwError } from 'rxjs';
-import { InfoClienteDTO, InfoResponseClienteDTO } from '../models/cliente-model/cliente-model.module';
+import { InfoClienteDTO, InfoResponseClienteDTO } from '../models/models/models.module';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,7 @@ export class ServiceService {
       retry(0),
       catchError(this.handleError),
       map((response) => response)
+
     );
    }
 }
