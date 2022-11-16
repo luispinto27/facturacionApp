@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="subtitulo">
+      Factura
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()" color="primary">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <h3 class="subtitulo encabezado"> Generar Factura</h3>
+
+
+  <ion-item style="margin-top: 20px;">
+    <ion-label class="normal" position="floating">
+      numero factura:
+    </ion-label>
+    <ion-input [(ngModel)]="infoFactura.numeroFactura" class="normal" type="text">
+    </ion-input>
+  </ion-item>
+  
+  <ion-item style="margin-top: 20px;">
+    <ion-label class="normal" position="floating">
+      Vendedor:
+    </ion-label>
+    <ion-input [(ngModel)]="infoFactura.facturaVendedor" class="normal" type="number">
+    </ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 20px;">
+    <ion-label class="normal" position="stacked">
+      Fecha de registro:
+    </ion-label>
+    <ion-input [(ngModel)]="infoFactura.facturaFecha" class="normal" type="date">
+    </ion-input>
+  </ion-item>
+
+  
+  <ion-item style="margin-top: 20px;">
+    <ion-label class="normal" position="stacked">
+      Cliente:
+    </ion-label>
+    <ion-input [(ngModel)]="infoFactura.facturaCliente" class="normal" type="number">
+    </ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 20px;">
+    <ion-label class="normal" position="stacked">
+      Observacion:
+    </ion-label>
+    <ion-input [(ngModel)]="infoFactura.facturaObservacion" class="normal" type="text">
+    </ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 20px;">
+    <ion-label class="normal" position="stacked">
+      Total:
+    </ion-label>
+    <ion-input [(ngModel)]="infoFactura.totalFactura" class="normal" type="number">
+    </ion-input>
+  </ion-item>
+  <ion-button style="margin: 30px" expand="full" color="tertiary" (click)="guardarFactura()" >
+      Guardar
+  </ion-button>
+</ion-content>
