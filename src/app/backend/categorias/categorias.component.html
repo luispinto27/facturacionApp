@@ -1,3 +1,191 @@
-<p>
-  categorias works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="subtitulo"> Categorias </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()" color="primary">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3 class="subtitulo encabezado">Ingrese los datos de la Categoria</h3>
+
+  <form #formulario="ngForm" (ngSubmit)="guardarCategoria(formulario)">
+    <ion-item style="margin-top: 20px">
+      <ion-label class="normal" position="floating"> Nombres: </ion-label>
+      <ion-input
+        [(ngModel)]="infoCategoria.categoriaId"
+        id="categoriaId"
+        class="normal"
+        type="int"
+        inputmode="Identificación"
+        required
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px">
+      <ion-label class="normal" position="floating"> Apellidos: </ion-label>
+      <ion-input
+        [(ngModel)]="infoCategoria.vendedorApellidos"
+        name="vendedorApellidos"
+        class="normal"
+        type="string"
+        inputmode="text"
+        required
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px">
+      <ion-label class="normal" position="floating">
+        Número de Identificación:
+      </ion-label>
+      <ion-input
+        [(ngModel)]="infoCategoria.vendedorNumeroIdentificacion"
+        name="vendedorNumeroIdentificacion"
+        class="normal"
+        type="string"
+        inputmode="text"
+        required
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px">
+      <ion-label class="normal" position="floating"> Teléfono: </ion-label>
+      <ion-input
+        [(ngModel)]="infoCategoria.vendedorTelefono"
+        name="vendedorTelefono"
+        class="normal"
+        type="numeric"
+        inputmode="tel"
+        required
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px">
+      <ion-label class="normal" position="floating">
+        Correo Electrónico:
+      </ion-label>
+      <ion-input
+        [(ngModel)]="infoCategoria.vendedorCorreoElectronico"
+        name="vendedorCorreoElectronico"
+        class="normal"
+        type="string"
+        inputmode="email"
+        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+        required
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px">
+      <ion-label class="normal" position="stacked">
+        Fecha Nacimiento:
+      </ion-label>
+      <ion-input
+        [(ngModel)]="infoCategoria.vendedorFechaNacimiento"
+        name="vendedorFechaNacimiento"
+        class="normal"
+        type="datetime-local"
+        required
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px">
+      <ion-label class="normal" position="floating"> Género: </ion-label>
+      <ion-select
+        [(ngModel)]="infoCategoria.vendedorGenero"
+        name="vendedorGenero"
+        placeholder="Seleccione..."
+        required
+      >
+        <ion-select-option value="masculino"> Masculino </ion-select-option>
+        <ion-select-option value="femenino"> Femenino </ion-select-option>
+        <ion-select-option value="otro"> Otro </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px">
+      <ion-checkbox
+        [(ngModel)]="infoCategoria.estado"
+        name="estado"
+        slot="start"
+      ></ion-checkbox>
+      <ion-label>Estado</ion-label>
+    </ion-item>
+
+      <ion-item style="margin-top: 20px">
+        <ion-label class="normal" position="floating">Password:</ion-label>      
+        <ion-input [type]="passwordTypeInput ? 'text' : 'password'" 
+                  name="password"
+                  [(ngModel)]="infoCategoria.password"
+                  class="normal"
+                  [disabled]="noCambia"
+                  required>                                                         
+                  </ion-input>
+                  <ion-icon  [name]="passwordToggleIcon" class="btn_eye_icon" (click)="showPassword()"></ion-icon>                     
+      </ion-item>
+
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6">
+                <ion-button
+                style="margin: 30px"
+                expand="full"
+                color="tertiary"
+                [disabled]="formulario.invalid"
+                type="submit"
+              >
+                Guardar
+              </ion-button>
+          </ion-col>
+          <ion-col size="6">
+              <ion-button
+              style="margin: 30px"
+              expand="full"
+              color="tertiary"
+              id="open-modal" expand="full"
+            >
+              Buscar
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </form>
+
+  <ion-modal #modal trigger="open-modal">
+    <ng-template>
+      <ion-content>
+        <ion-toolbar>
+          <ion-title>Modal</ion-title>
+          <ion-buttons slot="end">
+            <ion-button color="light" (click)="modal.dismiss()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+        <ion-virtual-scroll [items]="listVendedor" approxItemHeight="320px">
+          <ion-list *virtualItem="let item; let itemBounds = bounds;">
+            <ion-item>
+              <ion-avatar slot="start">
+                <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
+              </ion-avatar>
+              <ion-label  (click)="seleccionaPersona(item)">
+                <h2>{{ item.vendedorNombres }}</h2>
+                <p>{{ item.vendedorApellidos }}</p>
+              </ion-label>
+              <ion-avatar slot="end" (click)="eliminar(item)">
+                <ion-icon name="trash-outline"></ion-icon>
+              </ion-avatar>
+            </ion-item>
+        </ion-list>
+      </ion-virtual-scroll>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>
