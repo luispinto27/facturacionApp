@@ -80,5 +80,26 @@ export class InfoDataClientesDTO {
     data: InfoClienteDTO [];
 }
 
+export class InfoFacturaDTO {
+  facturaNumero: string;
+  facturaTotal: string;
+  facturaTotalDescuento: string;
+  facturaNeto: string;
+  facturaVendedor: string;
+  facturaCliente: string;
+  facturaFecha: Date;
+  estado: string;
+  facturaDetalles: any[];
 
-
+  constructor() {
+    this.facturaNumero = '';
+    this.facturaTotal = '';
+    this.facturaTotalDescuento = '';
+    this.facturaNeto = '';
+    this.facturaVendedor = '';
+    this.facturaCliente = '';
+    this.facturaFecha = new Date();
+    this.estado = 'facturado';
+    this.facturaDetalles = [];
+  }
+}

@@ -5,6 +5,7 @@ import { from, Observable, throwError } from 'rxjs';
 import { EstadoClienteDTO, EstadoVendedorDTO,
   InfoClienteDTO,
   InfoDataClientesDTO,
+  InfoFacturaDTO,
   InfoResponseClienteDTO,
   InfoResponseVendedorDTO,
   InfoVendedorDTO } from '../models/models/models.module';
@@ -94,5 +95,14 @@ export class ServiceService {
 
     );
    }
+
+   public crearFactura(data: InfoFacturaDTO) {
+    return this.http.post(`${this.urlServicio}api/factura`, data).pipe(
+      map((resp: any) => {
+        console.log('Resp: ', resp);
+        return resp;
+      })
+    );
+  }
 
 }
