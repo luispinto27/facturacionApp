@@ -1,7 +1,8 @@
 export class InfoClienteDTO {
+  id: number;
   clienteNombres: string;
   clienteApellidos: string;
-  clienteNumeroIdentificacion: string;
+  clienteNumeroIdentificacion: number;
   clienteTelefono: string;
   clienteCorreoElectronico: string;
   clienteFechaNacimiento: Date;
@@ -11,7 +12,7 @@ export class InfoClienteDTO {
   constructor() {
     this.clienteNombres = '';
     this.clienteApellidos = '';
-    this.clienteNumeroIdentificacion = '';
+    this.clienteNumeroIdentificacion = 0;
     this.clienteTelefono = '';
     this.clienteCorreoElectronico = '';
     this.clienteFechaNacimiento = new Date();
@@ -63,4 +64,21 @@ export class InfoResponseClienteDTO {
 export class InfoResponseVendedorDTO {
   codigo: number;
 }
+
+export class EstadoClienteDTO {
+  id: number;
+  clienteEstado: boolean;
+
+  constructor(){
+    this.id = 0;
+    this.clienteEstado = true;
+  }
+}
+
+export class InfoDataClientesDTO {
+    codigo: number;
+    data: InfoClienteDTO [];
+}
+
+
 
