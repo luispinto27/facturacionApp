@@ -29,6 +29,7 @@ export class InfoVendedorDTO {
   vendedorFechaNacimiento: Date;
   vendedorGenero: string;
   estado: boolean;
+  password: string;
 
   constructor() {
     this.vendedorNombres = '';
@@ -39,6 +40,7 @@ export class InfoVendedorDTO {
     this.vendedorFechaNacimiento = new Date();
     this.vendedorGenero = '';
     this.estado = true;
+    this.password = '';
   }
 }
 
