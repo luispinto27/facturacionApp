@@ -27,9 +27,9 @@
         Vendedor:
       </ion-label>
       <ion-select placeholder="Seleccione" formControlName="facturaVendedor">
-        <ion-select-option value="David">David</ion-select-option>
-        <ion-select-option value="Burbano">Burbano</ion-select-option>
-        <ion-select-option value="Guamanga">Guamanga</ion-select-option>
+        <ion-select-option value="1">David</ion-select-option>
+        <ion-select-option value="2">Burbano</ion-select-option>
+        <ion-select-option value="3">Guamanga</ion-select-option>
       </ion-select>
 
     </ion-item>
@@ -39,9 +39,9 @@
         Cliente:
       </ion-label>
       <ion-select placeholder="Seleccione" formControlName="facturaCliente">
-        <ion-select-option value="David">David</ion-select-option>
-        <ion-select-option value="Burbano">Burbano</ion-select-option>
-        <ion-select-option value="Guamanga">Guamanga</ion-select-option>
+        <ion-select-option value="1">David</ion-select-option>
+        <ion-select-option value="2">Burbano</ion-select-option>
+        <ion-select-option value="3">Guamanga</ion-select-option>
       </ion-select>
     </ion-item>
 
@@ -56,9 +56,9 @@
         <ion-col size="8">
           <ion-item style="margin-top: 20px;">
             <ion-select class="ion-input-select" placeholder="Producto" formControlName="producto">
-              <ion-select-option value="Papa">Papa</ion-select-option>
-              <ion-select-option value="Yuca">Yuca</ion-select-option>
-              <ion-select-option value="Platano">Platano</ion-select-option>
+              <ion-select-option value="1">Papa</ion-select-option>
+              <ion-select-option value="2">Yuca</ion-select-option>
+              <ion-select-option value="3">Platano</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-col>
@@ -90,7 +90,7 @@
     <ion-grid>
       <ion-list>
         <ion-item *ngFor="let item of facturaDetalles">
-          <ion-label>Producto: <b>{{item.producto}}</b> Valor: <b>{{item.facturaDetallePrecio}}</b></ion-label>
+          <ion-label>Producto: <b>{{item.producto.productoId}}</b> Valor: <b>{{item.facturaDetalleSubTotal}}</b></ion-label>
         </ion-item>
       </ion-list>
     </ion-grid>

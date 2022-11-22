@@ -18,7 +18,7 @@ export class FacturaComponent implements OnInit {
     public menuController: MenuController,
     public service: ServiceService,
     private fb: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -26,10 +26,10 @@ export class FacturaComponent implements OnInit {
 
   addProduct(): void {
     this.facturaDetalles.push({
-      producto: this.invoiceForm.get('producto').value,
       facturaDetalleCantidad: this.invoiceForm.get('cantidad').value,
       facturaDetalleSubDescuento: this.invoiceForm.get('descuento').value,
-      facturaDetallePrecio: this.invoiceForm.get('precio').value,
+      facturaDetalleSubTotal: this.invoiceForm.get('precio').value,
+      producto: { productoId: this.invoiceForm.get('producto').value, }
     });
 
     this.invoiceForm.get('producto').setValue('');
@@ -63,15 +63,15 @@ export class FacturaComponent implements OnInit {
     let facturaTotalDescuento = 0;
 
     this.facturaDetalles.forEach((item) => {
-      total += item.facturaDetallePrecio * item.facturaDetalleCantidad;
+      total += item.facturaDetalleSubTotal * item.facturaDetalleCantidad;
       facturaTotalDescuento +=
-      item.facturaDetalleSubDescuento * item.facturaDetalleCantidad;  
-      facturaNeto += ((item.facturaDetallePrecio * item.facturaDetalleCantidad));
+        item.facturaDetalleSubDescuento * item.facturaDetalleCantidad;
+      facturaNeto += ((item.facturaDetalleSubTotal * item.facturaDetalleCantidad));
 
     });
 
     facturaNeto = facturaNeto - facturaTotalDescuento;
-    
+
     this.invoiceForm.get('facturaTotal').setValue(total);
     this.invoiceForm.get('facturaNeto').setValue(facturaNeto);
     this.invoiceForm
@@ -85,16 +85,16 @@ export class FacturaComponent implements OnInit {
 
   guardarFactura() {
     const payload: InfoFacturaDTO = {
-      facturaDetalles: this.facturaDetalles,
-      facturaVendedor: this.invoiceForm.get('facturaVendedor').value,
-      facturaCliente: this.invoiceForm.get('facturaCliente').value,
-      facturaNumero: this.invoiceForm.get('facturaNumero').value,
       facturaTotal: this.invoiceForm.get('facturaTotal').value,
-      facturaNeto: this.invoiceForm.get('facturaNeto').value,
-      facturaTotalDescuento: this.invoiceForm.get('facturaTotalDescuento')
-        .value,
       facturaFecha: new Date(),
-      estado: 'facturado',
+      facturaObservacion: 'Sin Observaciones',
+      cliente: {
+        id: this.invoiceForm.get('facturaCliente').value,
+      },
+      vendedor: {
+        id: this.invoiceForm.get('facturaVendedor').value,
+      },
+      facturaDetalles: this.facturaDetalles
     };
     console.log(payload);
 
@@ -110,7 +110,7 @@ export class FacturaComponent implements OnInit {
       }
     );
 
-  this.facturaDetalles = [];
-  this.initializeForm();
+    this.facturaDetalles = [];
+    this.initializeForm();
   }
 }

@@ -30,8 +30,8 @@ export class InfoVendedorDTO {
   vendedorCorreoElectronico: string;
   vendedorFechaNacimiento: Date;
   vendedorGenero: string;
- // vendedorEstado: boolean;
- // vendedorContrasena: string;
+  // vendedorEstado: boolean;
+  // vendedorContrasena: string;
 
   constructor() {
     this.id = 0;
@@ -42,8 +42,8 @@ export class InfoVendedorDTO {
     this.vendedorCorreoElectronico = '';
     this.vendedorFechaNacimiento = new Date();
     this.vendedorGenero = '';
-  //  this.vendedorEstado = true;
-  //  this.vendedorContrasena = '';
+    //  this.vendedorEstado = true;
+    //  this.vendedorContrasena = '';
   }
 }
 
@@ -51,7 +51,7 @@ export class EstadoVendedorDTO {
   id: number;
   vendedorEstado: boolean;
 
-  constructor(){
+  constructor() {
     this.id = 0;
     this.vendedorEstado = true;
   }
@@ -69,37 +69,31 @@ export class EstadoClienteDTO {
   id: number;
   clienteEstado: boolean;
 
-  constructor(){
+  constructor() {
     this.id = 0;
     this.clienteEstado = true;
   }
 }
 
 export class InfoDataClientesDTO {
-    codigo: number;
-    data: InfoClienteDTO [];
+  codigo: number;
+  data: InfoClienteDTO[];
 }
 
 export class InfoFacturaDTO {
-  facturaNumero: string;
   facturaTotal: string;
-  facturaTotalDescuento: string;
-  facturaNeto: string;
-  facturaVendedor: string;
-  facturaCliente: string;
   facturaFecha: Date;
-  estado: string;
+  facturaObservacion: string;
+  cliente: { id: string }
+  vendedor: { id: string }
   facturaDetalles: any[];
 
   constructor() {
-    this.facturaNumero = '';
-    this.facturaTotal = '';
-    this.facturaTotalDescuento = '';
-    this.facturaNeto = '';
-    this.facturaVendedor = '';
-    this.facturaCliente = '';
-    this.facturaFecha = new Date();
-    this.estado = 'facturado';
-    this.facturaDetalles = [];
+    this.facturaTotal = '',
+    this.facturaFecha = new Date(),
+    this.facturaObservacion = '',
+    this.cliente = null,
+    this.vendedor = null,
+    this.facturaDetalles = []
   }
 }
