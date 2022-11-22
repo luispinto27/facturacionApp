@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { VendedorComponent } from './vendedor/vendedor.component';
 
 
-
 @NgModule({
   declarations: [
     SetClientesComponent,
