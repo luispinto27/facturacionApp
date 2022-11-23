@@ -1,5 +1,5 @@
 export class InfoCategoriaDTO {
-  categoriaId: string;
+ // categoriaId: string;
   categoriaCodigo: string;
   categoriaDescripcion: string;
   categoriaEstado: boolean;
@@ -7,7 +7,7 @@ export class InfoCategoriaDTO {
   categoriaFechaModificacion: Date;
 
   constructor() {
-    this.categoriaId = '';
+  //  this.categoriaId = '';
     this.categoriaCodigo = '';
     this.categoriaDescripcion = '';
     this.categoriaEstado = true;
