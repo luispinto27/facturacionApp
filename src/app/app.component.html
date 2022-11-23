@@ -8,6 +8,16 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
+
+        <ion-menu-toggle autoHide="false">
+          <ion-item button="true" detail="true" [routerLink]="['/home']">
+            <ion-icon name="people-outline"></ion-icon>
+            <ion-label class="normalMenu">
+              Inicio
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
         <ion-menu-toggle autoHide="false">
           <ion-item button="true" detail="true" [routerLink]="['/set-clientes']">
             <ion-icon name="people-outline"></ion-icon>
@@ -18,15 +28,26 @@
         </ion-menu-toggle>
 
         <ion-menu-toggle autoHide="false">
-          <ion-item button="true" detail="true" [routerLink]="['/productos']">
+          <ion-item button="true" detail="true" [routerLink]="['/vendedor']">
             <ion-icon name="cash-outline"></ion-icon>
             <ion-label class="normalMenu">
-              Productos
+              Vendedores
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        
+        <ion-menu-toggle autoHide="false">
+          <ion-item button="true" detail="true" [routerLink]="['/factura']">
+            <ion-icon name="document-text-outline"></ion-icon>
+            <ion-label class="normalMenu">
+              Factura
             </ion-label>
           </ion-item>
         </ion-menu-toggle>
       </ion-content>
     </ion-menu>
+
 
     <!-- the main content -->
     <ion-router-outlet id="main"></ion-router-outlet>

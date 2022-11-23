@@ -1,0 +1,197 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="subtitulo"> Vendedor </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()" color="primary">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3 class="subtitulo encabezado">Ingrese los datos del vendedor</h3>
+
+  <form #formulario="ngForm" (ngSubmit)="guardarVendedor(formulario)">
+    <ion-item style="margin-top: 20px">
+      <ion-label class="normal" position="floating"> Nombres: </ion-label>
+      <ion-input
+        [(ngModel)]="infoVendedor.vendedorNombres"
+        name="vendedorNombres"
+        class="normal"
+        type="string"
+        inputmode="text"
+        required
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px">
+      <ion-label class="normal" position="floating"> Apellidos: </ion-label>
+      <ion-input
+        [(ngModel)]="infoVendedor.vendedorApellidos"
+        name="vendedorApellidos"
+        class="normal"
+        type="string"
+        inputmode="text"
+        [disabled]="noCambia"
+        required
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px">
+      <ion-label class="normal" position="floating">
+        Número de Identificación:
+      </ion-label>
+      <ion-input
+        [(ngModel)]="infoVendedor.vendedorNumeroIdentificacion"
+        name="vendedorNumeroIdentificacion"
+        class="normal"
+        type="number"
+        inputmode="text"
+        [disabled]="noCambia"
+        required
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px">
+      <ion-label class="normal" position="floating"> Teléfono: </ion-label>
+      <ion-input
+        [(ngModel)]="infoVendedor.vendedorTelefono"
+        name="vendedorTelefono"
+        class="normal"
+        type="numeric"
+        inputmode="tel"
+        [disabled]="noCambia"
+        required
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px">
+      <ion-label class="normal" position="floating">
+        Correo Electrónico:
+      </ion-label>
+      <ion-input
+        [(ngModel)]="infoVendedor.vendedorCorreoElectronico"
+        name="vendedorCorreoElectronico"
+        class="normal"
+        type="string"
+        inputmode="email"
+        [disabled]="noCambia"
+        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+        required
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px">
+      <ion-label class="normal" position="stacked">
+        Fecha Nacimiento:
+      </ion-label>
+      <ion-input
+        [(ngModel)]="infoVendedor.vendedorFechaNacimiento"
+        name="vendedorFechaNacimiento"
+        class="normal"
+        type="datetime-local"
+        [disabled]="noCambia"
+        required
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px">
+      <ion-label class="normal" position="floating"> Género: </ion-label>
+      <ion-select
+        [(ngModel)]="infoVendedor.vendedorGenero"
+        name="vendedorGenero"
+        [disabled]="noCambia"
+        placeholder="Seleccione..."
+        required
+      >
+        <ion-select-option value="M"> Masculino </ion-select-option>
+        <ion-select-option value="F"> Femenino </ion-select-option>
+        <ion-select-option value="O"> Otro </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px">
+      <ion-checkbox
+        [(ngModel)]="cambioEstado.vendedorEstado"
+        name="estado"
+        slot="start"
+      ></ion-checkbox>
+      <ion-label>Estado</ion-label>
+    </ion-item>
+
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6">
+                <ion-button
+                style="margin: 30px"
+                expand="full"
+                color="tertiary"
+                type="submit"
+                [disabled]="formulario.invalid"
+                *ngIf="!noCambia"
+              >
+                Guardar
+              </ion-button>
+              <ion-button
+                style="margin: 30px"
+                expand="full"
+                color="tertiary"
+                [disabled]="formulario.invalid"
+                (click)="cambiarEstado()"
+                *ngIf="noCambia"
+              >
+                Editar
+              </ion-button>
+          </ion-col>
+          <ion-col size="6">
+              <ion-button
+              style="margin: 30px"
+              expand="full"
+              color="tertiary"
+              id="open-modal" expand="full"
+              (click)="mostrarDatos()"
+            >
+              Buscar
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </form>
+
+  <ion-modal #modal trigger="open-modal">
+    <ng-template>
+      <ion-content>
+        <ion-toolbar>
+          <ion-title>Modal</ion-title>
+          <ion-buttons slot="end">
+            <ion-button color="light" (click)="modal.dismiss()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+        <ion-virtual-scroll [items]="listVendedor" approxItemHeight="320px">
+          <ion-list *virtualItem="let item; let itemBounds = bounds;">
+            <ion-item>
+              <ion-avatar slot="start">
+                <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
+              </ion-avatar>
+              <ion-label  (click)="seleccionaPersona(item)">
+                <h2>{{ item.vendedorNombres }}</h2>
+                <p>{{ item.vendedorApellidos }}</p>
+              </ion-label>
+              <ion-avatar slot="end" (click)="eliminar(item)">
+                <ion-icon name="trash-outline"></ion-icon>
+              </ion-avatar>
+            </ion-item>
+        </ion-list>
+      </ion-virtual-scroll>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>

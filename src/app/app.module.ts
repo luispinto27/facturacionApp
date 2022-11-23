@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PagesModule } from './pages/pages.module';
 import { BackendModule } from './backend/backend.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,8 @@ import { BackendModule } from './backend/backend.module';
     PagesModule,
     BackendModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule],
       providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
       bootstrap: [AppComponent],

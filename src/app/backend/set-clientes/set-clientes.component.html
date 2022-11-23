@@ -13,11 +13,12 @@
 
 <ion-content>
   <h3 class="subtitulo encabezado"> Ingrese los datos del Cliente</h3>
+  <form #formulario="ngForm" (ngSubmit)="guardarCliente(formulario)">
   <ion-item style="margin-top: 20px;">
     <ion-label class="normal" position="floating">
       Nombres:
     </ion-label>
-    <ion-input [(ngModel)]="infoCliente.clienteNombres" class="normal" type="string" inputmode="text">
+    <ion-input [(ngModel)]="infoCliente.clienteNombres" name="clienteNombres" class="normal" type="string" inputmode="text" required>
 
     </ion-input>
   </ion-item>
@@ -26,7 +27,7 @@
     <ion-label class="normal" position="floating">
       Apellidos:
     </ion-label>
-    <ion-input [(ngModel)]="infoCliente.clienteApellidos" class="normal" type="string" inputmode="text">
+    <ion-input [(ngModel)]="infoCliente.clienteApellidos" name="clienteApellidos" class="normal" type="string" inputmode="text" required>
 
     </ion-input>
   </ion-item>
@@ -35,7 +36,7 @@
     <ion-label class="normal" position="floating">
       Número de Identificación:
     </ion-label>
-    <ion-input [(ngModel)]="infoCliente.clienteNumeroIdentificacion" class="normal" type="string" inputmode="text">
+    <ion-input [(ngModel)]="infoCliente.clienteNumeroIdentificacion" name="clienteNumeroIdentificacion" class="normal" type="numeric" inputmode="numeric" required>
 
     </ion-input>
   </ion-item>
@@ -44,7 +45,7 @@
     <ion-label class="normal" position="floating">
       Teléfono:
     </ion-label>
-    <ion-input [(ngModel)]="infoCliente.clienteTelefono" class="normal" type="numeric" inputmode="tel">
+    <ion-input [(ngModel)]="infoCliente.clienteTelefono" name="clienteTelefono" class="normal" type="numeric" inputmode="tel" required>
 
     </ion-input>
   </ion-item>
@@ -53,7 +54,9 @@
     <ion-label class="normal" position="floating">
       Correo Electrónico:
     </ion-label>
-    <ion-input [(ngModel)]="infoCliente.clienteCorreoElectronico" class="normal" type="string" inputmode="email">
+    <ion-input [(ngModel)]="infoCliente.clienteCorreoElectronico" name="clienteCorreoElectronico" class="normal" type="string" inputmode="email"
+    pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+    required>
 
     </ion-input>
   </ion-item>
@@ -62,7 +65,7 @@
     <ion-label class="normal" position="stacked">
       Fecha Nacimiento:
     </ion-label>
-    <ion-input [(ngModel)]="infoCliente.clienteFechaNacimiento" class="normal" type="datetime-local">
+    <ion-input [(ngModel)]="infoCliente.clienteFechaNacimiento" name="clienteFechaNacimiento" class="normal" type="datetime-local" required>
     </ion-input>
   </ion-item>
 
@@ -70,20 +73,59 @@
     <ion-label class="normal" position="floating">
       Género:
     </ion-label>
-    <ion-select [(ngModel)]="infoCliente.clienteGenero"  placeholder="Seleccione...">
-      <ion-select-option value="masculino"> Masculino </ion-select-option>
-      <ion-select-option value="femenino"> Femenino </ion-select-option>
-      <ion-select-option value="otro"> Otro </ion-select-option>
+    <ion-select [(ngModel)]="infoCliente.clienteGenero" name="clienteGenero"  placeholder="Seleccione..." required>
+      <ion-select-option value="M"> Masculino </ion-select-option>
+      <ion-select-option value="F"> Femenino </ion-select-option>
+      <ion-select-option value="O"> Otro </ion-select-option>
     </ion-select>
 
   </ion-item>
 
-  <ion-item style="margin-top: 20px;">
-    <ion-checkbox [(ngModel)]="infoCliente.estado" slot="start"></ion-checkbox>
+  <ion-item style="margin-top: 20px">
+    <ion-checkbox [(ngModel)]="cambioEstado.clienteEstado" name="estado" slot="start"></ion-checkbox>
     <ion-label>Estado</ion-label>
   </ion-item>
 
-  <ion-button style="margin: 30px" expand="full" color="tertiary" (click)="guardarCliente()" >
-      Guardar
-  </ion-button>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6">
+            <ion-button style="margin: 30px" expand="full" color="tertiary" type="submit" [disabled]="formulario.invalid" *ngIf="!noCambia">
+              Guardar
+            </ion-button>
+          <ion-button style="margin: 30px" expand="full" color="tertiary" [disabled]="formulario.invalid" (click)="cambiarEstadoCliente()" *ngIf="noCambia">
+              Editar
+          </ion-button>
+      </ion-col>
+      <ion-col size="6">
+          <ion-button style="margin: 30px" expand="full" color="tertiary" id="open-modal" expand="full" (click)="mostrarDatos()">
+            Buscar
+          </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </form>
+
+<ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+  <ng-template>
+    <ion-content>
+      <ion-searchbar placeholder="Search" (click)="modal.setCurrentBreakpoint(0.75)"></ion-searchbar>
+      <ion-virtual-scroll [items]="listClientes" approxItemHeight="320px">
+      <ion-list *virtualItem="let item; let itemBounds = bounds;">
+        <ion-item>
+          <ion-avatar slot="start">
+            <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
+          </ion-avatar>
+          <ion-label (click)="seleccionarCliente(item)">
+            <h2>{{ item.clienteNombres }}</h2>
+            <p>{{ item.clienteApellidos }}</p>
+          </ion-label>
+          <ion-avatar slot="end" (click)="eliminarCliente(item)">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-avatar>
+        </ion-item>
+      </ion-list>
+    </ion-virtual-scroll>
+    </ion-content>
+  </ng-template>
+</ion-modal>
 </ion-content>
