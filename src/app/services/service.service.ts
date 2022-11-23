@@ -6,6 +6,7 @@ import { EstadoClienteDTO, EstadoVendedorDTO,
   InfoClienteDTO,
   InfoDataClientesDTO,
   InfoFacturaDTO,
+  InfoProductoDTO,
   InfoResponseClienteDTO,
   InfoResponseVendedorDTO,
   InfoVendedorDTO } from '../models/models/models.module';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuController } from '@ionic/angular';
-import { InfoFacturaDTO } from 'src/app/models/models/models.module';
+import { InfoFacturaDTO, InfoProductoDTO } from 'src/app/models/models/models.module';
 import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
