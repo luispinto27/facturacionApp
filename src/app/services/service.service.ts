@@ -110,4 +110,21 @@ export class ServiceService {
     );
 
   }
+
+  public crearFactura(data: InfoProductoDTO) {
+
+    return this.http.post(`${this.urlServicio}api/factura`, data).pipe(
+
+      map((resp: any) => {
+
+        console.log('Resp: ', resp);
+
+        return resp;
+
+      })
+
+    );
+
+  }
+
 }
