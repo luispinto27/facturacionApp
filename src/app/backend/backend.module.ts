@@ -5,12 +5,13 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ProductosComponent } from './productos/productos.component';
+import { VendedorComponent } from './vendedor/vendedor.component';
 
 
 
 @NgModule({
   declarations: [
-    SetClientesComponent, ProductosComponent
+    SetClientesComponent, ProductosComponent, VendedorComponent
   ],
   imports: [
     CommonModule,
