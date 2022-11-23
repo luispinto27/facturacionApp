@@ -16,7 +16,7 @@ export class SetFacturasComponent implements OnInit {
   ngOnInit() {}
 
   guardaFactura ()  {
-    //console.log(this.infoFactura);
+    console.log(this.infoFactura);
     let datosEnvio: {} = {
       facturaTotal: this.infoFactura.facturaTotal,
       facturaFecha: this.infoFactura.facturaFecha,

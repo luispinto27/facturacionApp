@@ -15,7 +15,9 @@ export class ConsultarfacturaComponent implements OnInit {
 
   ngOnInit() { }
 
-  consultarFactura ()  {
+  consultarFactura ()  {    
+    console.log(this.fechaDesde);
+    console.log(this.fechaHasta);
     let datosEnvio: {} = {
       fechaDesde: this.fechaDesde,
       fechaHasta: this.fechaHasta,
