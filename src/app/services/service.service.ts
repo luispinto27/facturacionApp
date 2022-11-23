@@ -28,7 +28,62 @@ export class ServiceService {
       retry(0),
       catchError(this.handleError),
       map((response) => response)
+    );
+   }
+    return this.http
+    .post<InfoResponseVendedorDTO>(
+      `${this.urlServicio}api/vendedor/`, data)
+    .pipe(
+      retry(0),
+      catchError(this.handleError),
+      map((response) => response)
 
     );
    }
+
+   public getAllVendedores(): Observable<InforResponseVendedorDTO>{
+    return this.http.get<InforResponseVendedorDTO>(`${this.urlServicio}api/vendedor/`);
+   }
+
+   public getAllClientes(): Observable<InfoDataClientesDTO>{
+    return this.http.get<InfoDataClientesDTO>(`${this.urlServicio}api/cliente/`);
+   }
+
+   public crearLoginVendedor(data: VendedorLogin): Observable<InfoResponseVendedorDTO> {
+    return this.http
+    .post<InfoResponseVendedorDTO>(
+      `${this.urlServicio}api/vendedor/login`, data)
+    .pipe(
+      retry(0),
+      catchError(this.handleError),
+      map((response) => response)
+
+    );
+   }
+
+   public actualizarEstado(data: EstadoVendedorDTO): Observable<InfoResponseVendedorDTO> {
+    return this.http
+    .put<InfoResponseVendedorDTO>(
+      `${this.urlServicio}api/vendedor`, data)
+    .pipe(
+      retry(0),
+      catchError(this.handleError),
+      map((response) => response)
+
+    );
+   }
+
+   public actualizarEstadoCliente(data: EstadoClienteDTO): Observable<InfoResponseClienteDTO> {
+    return this.http
+    .put<InfoResponseClienteDTO>(
+      `${this.urlServicio}api/cliente`, data)
+    .pipe(
+      retry(0),
+      catchError(this.handleError),
+      map((response) => response)
+
+    );
+   }
+
+>>>>>>> develop
 }
