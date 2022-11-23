@@ -3,11 +3,13 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { SetClientesComponent } from './backend/set-clientes/set-clientes.component';
 import { HomeComponent } from './pages/home/home.component';
 import { VendedorComponent } from './backend/vendedor/vendedor.component';
+import { ProductosComponent } from './backend/productos/productos.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'set-clientes', component: SetClientesComponent },
   { path: 'vendedor', component: VendedorComponent},
+  {path: 'productos', component: ProductosComponent },
   {
     path: '',
     redirectTo: 'home',

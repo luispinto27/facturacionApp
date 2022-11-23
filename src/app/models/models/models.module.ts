@@ -80,5 +80,40 @@ export class InfoDataClientesDTO {
     data: InfoClienteDTO [];
 }
 
+export class InfoProductoDTO {
+
+  productoDescripcion: string;
+
+  productoIva: string;
+
+  productoNombre : string;
+
+  productoPorcentajeDescuento : string;
+
+  productoValor : string;
+
+  categoria: { categoriaId: string }
+
+
+
+  constructor() {
+
+    this.productoDescripcion = '',
+
+    this.productoIva = '',
+
+    this.productoNombre = '',
+
+    this.productoPorcentajeDescuento = '',
+
+    this.productoValor = '',
+
+    this.categoria = null
+
+  }
+
+
+}
+
 
 
