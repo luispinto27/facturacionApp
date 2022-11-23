@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InfoFacturaDTO } from 'src/app/models/models/models.module';
-import { FacturaServiceService } from 'src/app/services/factura-service/factura-service.service';
+import { FacturaService } from 'src/app/services/factura-service/factura-service.service';
 
 @Component({
   selector: 'app-set-facturas',
@@ -11,7 +11,7 @@ export class SetFacturasComponent implements OnInit {
 
   infoFactura: InfoFacturaDTO = new InfoFacturaDTO();
 
-  constructor(private facturaServiceService: FacturaServiceService) { }
+  constructor(private facturaService: FacturaService) { }
 
   ngOnInit() {}
 
@@ -40,7 +40,7 @@ export class SetFacturasComponent implements OnInit {
     };
     //console.log(datosEnvio);
     //console.log(JSON.stringify(datosEnvio));
-    this.facturaServiceService.crearFactura(datosEnvio).subscribe(
+    this.facturaService.crearFactura(datosEnvio).subscribe(
       async (respuesta: any) => {
         console.log(respuesta);
       },
