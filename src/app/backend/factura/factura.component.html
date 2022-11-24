@@ -1,0 +1,135 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="subtitulo">
+      Factura
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()" color="primary">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="invoiceForm">
+    <ion-item style="margin-top: 20px;">
+      <ion-label class="normal" position="floating">
+        Número factura:
+      </ion-label>
+      <ion-input class="normal" type="string" formControlName="facturaNumero" inputmode="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px;">
+      <ion-label class="normal" position="floating">
+        Vendedor:
+      </ion-label>
+      <ion-select placeholder="Seleccione" formControlName="facturaVendedor">
+        <ion-select-option value="1">David</ion-select-option>
+        <ion-select-option value="2">Burbano</ion-select-option>
+        <ion-select-option value="3">Guamanga</ion-select-option>
+      </ion-select>
+
+    </ion-item>
+
+    <ion-item style="margin-top: 20px;">
+      <ion-label class="normal" position="floating">
+        Cliente:
+      </ion-label>
+      <ion-select placeholder="Seleccione" formControlName="facturaCliente">
+        <ion-select-option value="1">David</ion-select-option>
+        <ion-select-option value="2">Burbano</ion-select-option>
+        <ion-select-option value="3">Guamanga</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px;">
+      <ion-label class="normal" style="margin-top: 40px;">
+        Detalle
+      </ion-label>
+    </ion-item>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <ion-item style="margin-top: 20px;">
+            <ion-select class="ion-input-select" placeholder="Producto" formControlName="producto">
+              <ion-select-option value="1">Papa</ion-select-option>
+              <ion-select-option value="2">Yuca</ion-select-option>
+              <ion-select-option value="3">Platano</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="4">
+          <ion-item style="margin-top: 20px;">
+            <ion-input type="number" placeholder="Cantidad" formControlName="cantidad"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item style="margin-top: 20px;">
+            <ion-input type="number" placeholder="Desc" formControlName="descuento"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item style="margin-top: 20px;">
+            <ion-input type="number" placeholder="Precio" formControlName="precio"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-button style="width: 80%; margin:auto; margin-top:30px;" expand="full" color="primary" (click)="addProduct()">
+      Agregar producto
+    </ion-button>
+
+    <ion-grid>
+      <ion-list>
+        <ion-item *ngFor="let item of facturaDetalles">
+          <ion-label>Producto: <b>{{item.producto.productoId}}</b> Valor: <b>{{item.facturaDetalleSubTotal}}</b></ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item style="margin-top: 20px;">
+            <ion-label class="normal" position="floating">
+              Total bruto
+            </ion-label>
+            <ion-input class="normal totalBruto" placeholder="Total" formControlName="facturaTotal" disabled="true">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item style="margin-top: 20px;">
+            <ion-label class="normal" position="floating">
+              Descuento
+            </ion-label>
+            <ion-input class="normal totalDescuento" placeholder="total + descuento"
+              formControlName="facturaTotalDescuento" disabled="true"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label class="normal" position="floating">
+              Total Neto
+            </ion-label>
+            <ion-input class="normal Totalneto" placeholder="Total neto" formControlName="facturaNeto" disabled="true">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-button (click)="guardarFactura()" style="width: 80%; margin:30px auto;" expand="full" color="primary">
+      Guardar factura
+    </ion-button>
+  </form>
+
+</ion-content>

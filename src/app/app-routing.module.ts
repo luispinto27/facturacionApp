@@ -6,6 +6,7 @@ import { SetFacturasComponent } from './backend/set-facturas/set-facturas.compon
 import { HomeComponent } from './pages/home/home.component';
 import { VendedorComponent } from './backend/vendedor/vendedor.component';
 import { ProductosComponent } from './backend/productos/productos.component';
+import { FacturaComponent } from './backend/factura/factura.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'consultarfactura', component: ConsultarfacturaComponent },
   { path: 'vendedor', component: VendedorComponent},
   { path: 'productos', component: ProductosComponent },
+  { path: 'factura', component: FacturaComponent },
   {
     path: '',
     redirectTo: 'home',
