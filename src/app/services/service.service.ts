@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, mergeMap, retry } from 'rxjs/operators';
 import { from, Observable, throwError } from 'rxjs';
+import { InfoProductoDTO } from '../models/cliente-model/cliente-model.module';
 import { EstadoClienteDTO, EstadoVendedorDTO,
   InfoClienteDTO,
   InfoDataClientesDTO,
@@ -96,6 +97,37 @@ export class ServiceService {
 
     );
    }
+   public crearProducto(data: InfoProductoDTO) {
+
+    return this.http.post(`${this.urlServicio}api/producto`, data).pipe(
+
+      map((resp: any) => {
+
+        console.log('Resp: ', resp);
+
+        return resp;
+
+      })
+
+    );
+
+  }
+
+  public crearFactura(data: InfoProductoDTO) {
+
+    return this.http.post(`${this.urlServicio}api/factura`, data).pipe(
+
+      map((resp: any) => {
+
+        console.log('Resp: ', resp);
+
+        return resp;
+
+      })
+
+    );
+
+  }
 
    public crearFactura(data: InfoFacturaDTO) {
     return this.http.post(`${this.urlServicio}api/factura`, data).pipe(
