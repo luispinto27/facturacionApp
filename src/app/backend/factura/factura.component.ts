@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuController } from '@ionic/angular';
-import { InfoFacturaDTO, InfoProductoDTO } from 'src/app/models/models/models.module';
+import { InfoFacturaDTO } from 'src/app/models/models/models.module';
 import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
@@ -10,7 +10,6 @@ import { ServiceService } from 'src/app/services/service.service';
   styleUrls: ['./factura.component.scss'],
 })
 export class FacturaComponent implements OnInit {
-  InfoProducto: InfoProductoDTO = new InfoProductoDTO();
   infoFactura: InfoFacturaDTO = new InfoFacturaDTO();
   invoiceForm: FormGroup;
   facturaDetalles: any[] = [];

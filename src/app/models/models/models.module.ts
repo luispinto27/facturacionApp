@@ -80,40 +80,21 @@ export class InfoDataClientesDTO {
     data: InfoClienteDTO [];
 }
 
-export class InfoProductoDTO {
-
-  productoDescripcion: string;
-
-  productoIva: string;
-
-  productoNombre : string;
-
-  productoPorcentajeDescuento : string;
-
-  productoValor : string;
-
-  categoria: { categoriaId: string }
-
-
+export class InfoFacturaDTO {
+  facturaTotal: string;
+  facturaFecha: Date;
+  facturaObservacion: string;
+  cliente: { id: string }
+  vendedor: { id: string }
+  facturaDetalles: any[];
 
   constructor() {
-
-    this.productoDescripcion = '',
-
-    this.productoIva = '',
-
-    this.productoNombre = '',
-
-    this.productoPorcentajeDescuento = '',
-
-    this.productoValor = '',
-
-    this.categoria = null
-
+    this.facturaTotal = '',
+    this.facturaFecha = new Date(),
+    this.facturaObservacion = '',
+    this.cliente = null,
+    this.vendedor = null,
+    this.facturaDetalles = []
   }
-
-
 }
-
-
 
