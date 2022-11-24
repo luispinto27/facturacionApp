@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="subtitulo">
+      Productos
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()" color="primary">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item style="margin-top: 20px;">
+    <ion-label class="normal" position="floating">
+      Nombre producto:
+    </ion-label>
+    <ion-input></ion-input>
+    <!-- <ion-input [(ngModel)]="infoCliente.clienteNombres" class="normal" type="string" inputmode="text">
+    </ion-input> -->
+  </ion-item>
+
+  <ion-item style="margin-top: 20px;">
+    <ion-label class="normal" position="floating">
+      Descripción:
+    </ion-label>
+    <ion-textarea></ion-textarea>
+    <!-- <ion-input [(ngModel)]="infoCliente.clienteNombres" class="normal" type="string" inputmode="text">
+    </ion-input> -->
+  </ion-item>
+
+  <ion-item style="margin-top: 20px;">
+    <ion-label class="normal" position="floating">
+      Categoría:
+    </ion-label>
+    <ion-select placeholder="Seleccione">
+      <ion-select-option value="apples">Categoría</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item style="margin-top: 20px;">
+          <ion-input class="ion-input-select" placeholder="Valor"></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="6">
+        <ion-item style="margin-top: 20px;">
+          <label class="normal">iva: </label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item style="margin-top: 20px;">
+          <ion-input class="ion-input-select" placeholder="Descuento %"></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="6">
+        <ion-item style="margin-top: 20px;">
+          <ion-select placeholder="Estado">
+            <ion-select-option value="apples">Estado</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-button style="width: 80%; margin:30px auto;" expand="full" color="primary"> Guardar producto</ion-button>
+
+</ion-content>
