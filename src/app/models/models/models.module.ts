@@ -59,7 +59,8 @@ export class EstadoVendedorDTO {
 
 export class InfoResponseClienteDTO {
  
-   clienteNombres = '';
+    codigo = 0;
+    clienteNombres = '';
     clienteApellidos = '';
     clienteNumeroIdentificacion = '';
     clienteTelefono = '';
@@ -70,7 +71,7 @@ export class InfoResponseClienteDTO {
   
 }
 
-export class InfoFacturaDTO {
+export class InfoFactura2DTO {
 
  
   facturaTotal:number;

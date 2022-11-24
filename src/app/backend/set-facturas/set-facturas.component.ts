@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InfoFacturaDTO } from 'src/app/models/models/models.module';
+import { InfoFactura2DTO } from 'src/app/models/models/models.module';
 import { FacturaService } from 'src/app/services/factura-service/factura-service.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { FacturaService } from 'src/app/services/factura-service/factura-service
 })
 export class SetFacturasComponent implements OnInit {
 
-  infoFactura: InfoFacturaDTO = new InfoFacturaDTO();
+  infoFactura: InfoFactura2DTO = new InfoFactura2DTO();
 
   constructor(private facturaService: FacturaService) { }
 
