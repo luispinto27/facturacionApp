@@ -80,7 +80,47 @@ export class EstadoVendedorDTO {
 }
 
 export class InfoResponseClienteDTO {
-  codigo: number;
+ 
+    codigo = 0;
+    clienteNombres = '';
+    clienteApellidos = '';
+    clienteNumeroIdentificacion = '';
+    clienteTelefono = '';
+    clienteCorreoElectronico = '';
+    clienteFechaNacimiento = new Date();
+    clienteGenero = '';
+    estado = true;
+  
+}
+
+export class InfoFactura2DTO {
+
+ 
+  facturaTotal:number;
+  facturaFecha:Date;
+  facturaObservacion:String;
+  idcliente:number;
+  id:number;
+  facturaDetalleCantidad:number;
+  facturaDetalleSubTotal:number;
+  facturaDetalleSubDescuento:number;
+  productoId:number;
+  
+
+  constructor() {
+
+
+    this.facturaTotal = 0;
+    this.facturaFecha=null;
+    this.facturaObservacion='';
+    this.idcliente= 0;
+    this.id= 0;
+    this.facturaDetalleCantidad= 0;
+    this.facturaDetalleSubTotal= 0;
+    this.facturaDetalleSubDescuento= 0;
+    this.productoId= 0;
+ 
+  }
 }
 
 export class InfoResponseVendedorDTO {
@@ -102,5 +142,21 @@ export class InfoDataClientesDTO {
     data: InfoClienteDTO [];
 }
 
+export class InfoFacturaDTO {
+  facturaTotal: string;
+  facturaFecha: Date;
+  facturaObservacion: string;
+  cliente: { id: string }
+  vendedor: { id: string }
+  facturaDetalles: any[];
 
+  constructor() {
+    this.facturaTotal = '',
+    this.facturaFecha = new Date(),
+    this.facturaObservacion = '',
+    this.cliente = null,
+    this.vendedor = null,
+    this.facturaDetalles = []
+  }
+}
 

@@ -28,7 +28,7 @@ export class CategoriasComponent implements OnInit {
     this.service.crearCategoria(this.infoCategoria).subscribe(async datos => {
       // eslint-disable-next-line eqeqeq
       if (datos.codigo == 1) {
-        this.mostrarNotificaciones('Categoria Guardado Correctamente');
+        this.mostrarNotificaciones('Categoria Guardada Correctamente');
         this.limpiarFiltros();
       } else {
         this.mostrarNotificaciones('Error al guardar el registro');

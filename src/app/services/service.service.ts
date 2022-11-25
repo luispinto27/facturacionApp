@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, mergeMap, retry } from 'rxjs/operators';
 import { from, Observable, throwError } from 'rxjs';
 import { EstadoClienteDTO, EstadoVendedorDTO,
+  InfoFacturaDTO,
   InfoClienteDTO,
   InfoDataClientesDTO,
   InfoResponseClienteDTO,
@@ -30,8 +31,6 @@ export class ServiceService {
 
    public crearCategoria(data: InfoCategoriaDTO): Observable<InfoResponseCategoriaDTO> {
     return this.http
-    .post<InfoResponseClienteDTO>(
-      `${this.urlServicio}api/cliente/`, data)
     .post<InfoResponseCategoriaDTO>(
       `${this.urlServicio}api/categoria/`, data)
     .pipe(
@@ -97,5 +96,13 @@ export class ServiceService {
 
     );
    }
+  public crearFactura(data: InfoFacturaDTO) {
+    return this.http.post(`${this.urlServicio}api/factura`, data).pipe(
+      map((resp: any) => {
+        console.log('Resp: ', resp);
+        return resp;
+      })
+    );
+  }
 
 }

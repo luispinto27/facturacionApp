@@ -11,7 +11,7 @@
 
         <ion-menu-toggle autoHide="false">
           <ion-item button="true" detail="true" [routerLink]="['/home']">
-            <ion-icon name="people-outline"></ion-icon>
+            <ion-icon name="home-outline"></ion-icon>
             <ion-label class="normalMenu">
               Inicio
             </ion-label>
@@ -39,10 +39,47 @@
           <ion-item button="true" detail="true" [routerLink]="['/vendedor']">
             <ion-icon name="cash-outline"></ion-icon>
             <ion-label class="normalMenu">
+              Productos
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        
+        <ion-menu-toggle autoHide="false">
+          <ion-item button="true" detail="true" [routerLink]="['/set-facturas']">
+            <ion-icon name="newspaper-outline"></ion-icon>
+            <ion-label class="normalMenu">
+              Factura
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+       
+        <ion-menu-toggle autoHide="false">
+          <ion-item button="true" detail="true" [routerLink]="['/consultarfactura']">
+            <ion-icon name="newspaper-outline"></ion-icon>
+            <ion-label class="normalMenu">
+              Consultar Factura
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle autoHide="false">
+          <ion-item button="true" detail="true" [routerLink]="['/vendedor']">
+            <ion-icon name="server-outline"></ion-icon>
+            <ion-label class="normalMenu">
               Vendedores
             </ion-label>
           </ion-item>
         </ion-menu-toggle>
+
+        <ion-menu-toggle autoHide="false">
+          <ion-item button="true" detail="true" [routerLink]="['/factura']">
+            <ion-icon name="document-text-outline"></ion-icon>
+            <ion-label class="normalMenu">
+              Factura
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
       </ion-content>
     </ion-menu>
 
