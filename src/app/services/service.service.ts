@@ -10,6 +10,7 @@ import { EstadoClienteDTO, EstadoVendedorDTO,
   InfoVendedorDTO } from '../models/models/models.module';
 import { InforResponseVendedorDTO } from '../models/models/vendedor-out-list';
 import { VendedorLogin } from '../models/models/vendedor-login';
+import { InfoCategoriaDTO, InfoResponseCategoriaDTO } from '../models/models/models.module';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +28,12 @@ export class ServiceService {
     return throwError(error);
   }
 
-  public crearCliente(data: InfoClienteDTO): Observable<InfoResponseClienteDTO> {
+   public crearCategoria(data: InfoCategoriaDTO): Observable<InfoResponseCategoriaDTO> {
     return this.http
     .post<InfoResponseClienteDTO>(
       `${this.urlServicio}api/cliente/`, data)
+    .post<InfoResponseCategoriaDTO>(
+      `${this.urlServicio}api/categoria/`, data)
     .pipe(
       retry(0),
       catchError(this.handleError),

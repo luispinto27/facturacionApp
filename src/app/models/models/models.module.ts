@@ -1,3 +1,25 @@
+export class InfoCategoriaDTO {
+ // categoriaId: string;
+  categoriaCodigo: string;
+  categoriaDescripcion: string;
+  categoriaEstado: boolean;
+  categoriaFechaCreacion: Date;
+  categoriaFechaModificacion: Date;
+
+  constructor() {
+  //  this.categoriaId = '';
+    this.categoriaCodigo = '';
+    this.categoriaDescripcion = '';
+    this.categoriaEstado = true;
+    this.categoriaFechaCreacion = new Date();
+    this.categoriaFechaModificacion = new Date();
+  }
+}
+
+export class InfoResponseCategoriaDTO {
+  codigo: number;
+}
+
 export class InfoClienteDTO {
   id: number;
   clienteNombres: string;

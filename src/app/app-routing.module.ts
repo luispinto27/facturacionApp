@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { SetClientesComponent } from './backend/set-clientes/set-clientes.component';
+//import { FacturaComponent } from './backend/factura/factura.component';
+//import { ProductosComponent } from './backend/productos/productos.component';
+import { CategoriasComponent } from './backend/categorias/categorias.component';
 import { HomeComponent } from './pages/home/home.component';
-import { VendedorComponent } from './backend/vendedor/vendedor.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'set-clientes', component: SetClientesComponent },
-  { path: 'vendedor', component: VendedorComponent},
+  { path: 'categorias', component: CategoriasComponent },
+ // { path: 'productos', component: ProductosComponent },
+ //{ path: 'factura', component: FacturaComponent },
   {
     path: '',
     redirectTo: 'home',

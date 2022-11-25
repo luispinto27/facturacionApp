@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="subtitulo"> Categorias </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()" color="primary">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3 class="subtitulo encabezado">Ingrese los datos de la Categoria</h3>
+  
+<form #formulario="ngForm" (ngSubmit)="guardarCategoria(formulario)">
+    <ion-item style="margin-top: 20px">
+      <ion-label class="normal" position="floating"> Codigo: </ion-label>
+      <ion-input
+        [(ngModel)]="infoCategoria.categoriaCodigo"
+        name="categoriaCodigo"
+        class="normal"
+        type="string"
+        inputmode="text"
+        required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px">
+      <ion-label class="normal" position="floating"> Descripción: </ion-label>
+      <ion-input
+        [(ngModel)]="infoCategoria.categoriaDescripcion"        
+        name="categoriaDescripcion"
+        class="normal"
+        type="string"
+        inputmode="text"
+        required>
+      </ion-input>
+    </ion-item>
+
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="6">
+              <ion-button
+              style="margin: 30px"
+              expand="full"
+              color="tertiary"
+              type="submit"
+              [disabled]="formulario.invalid"
+              *ngIf="!noCambia">Guardar
+            </ion-button>            
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</form>
+</ion-content>
